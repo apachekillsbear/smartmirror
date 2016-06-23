@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<link rel="stylesheet" href="./style.css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
+	</head>
+	<body style="background-color: black">
+	<main>
+		<div class="half-container" style="background-color:rgba(200,200,200,0.05)">
+			<div id="weather" style="background-color: rgba(200,200,200,0.05)">
+				<span id="weather-temp"></span><img id="weather-icon"><br>
+				<span id="weather-conditions"></span><br>
+				<span id="weather-location"></span>
+			</div>
+			<div id="news" style="background-color: rgba(200,200,200,0.05)">
+			News
+			</div>
+		</div>
+		<div class="half-container right" style="background-color: rgba(200,200,200,0.05)">
+			<div id="time" style="background-color: rgba(200,200,200,0.05)">
+				<span id="time-hours"></span><span id="time-minutes"></span> <span id="time-meridian"></span><br>
+				<span id="time-day"></span><br>
+				<span id="time-month"></span> &nbsp;
+				<span id="time-date"></span><span id="time-datesuper"></span>
+				
+			</div>
+			<div id="agenda" style="background-color: rgba(200,200,200,0.05)">
+				<table id="agenda-table">
+				</table>
+			</div>
+		</div>
+	</main>
+	<div id="authorize-div" style="display: none">
+      <span>Authorize access to Google Calendar API</span>
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="jquery.jfeed.js"></script>
+	<script src="script.js"></script>
+	<script src="calendar.js"></script>  
+	<script async src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+</html>
