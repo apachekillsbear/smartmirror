@@ -3,7 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="./style.css">
 		<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
-	</head>
+		</head>
 	<body style="background-color: black">
 	<main>
 		<div class="half-container" style="background-color:rgba(200,200,200,0.05)">
@@ -30,6 +30,41 @@
 			</div>
 		</div>
 	</main>
+
+	<div id="modal-weather" style="position: absolute; bottom: 100%;">
+		Todays Weather
+		<br>
+		5 Day Forecast
+		<br>
+		Weather Map
+		<br>
+		24 Hour Temp. Chart
+	</div>
+
+	<div id="modal-time" style="position: absolute; bottom: 100%">
+		World Time (8 Clocks)
+		<br>
+		Sunrise/Sunset
+		<br>
+		Stopwatch/Timer
+	</div>
+
+	<div id="modal-news" style="position: absolute; bottom: 100%">
+		Date
+		<br>
+		News Headline scroll at bottom of screen
+		<br>
+		Headline List w/ Links + Logos
+	</div>
+
+	<div id="modal-agenda" style="position: absolute; bottom: 100%">
+		Google Calendar API
+		<br>
+		Full Daily/Monthly calendar
+		<br>
+		Editable cells
+	</div>
+
 	<div id="authorize-div" style="display: none">
       <span>Authorize access to Google Calendar API</span>
       <button id="authorize-button" onclick="handleAuthClick(event)">
@@ -39,6 +74,8 @@
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<script src="jquery.jfeed.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
 	<script src="script.js"></script>
 	<script src="calendar.js"></script>  
 	<script async src="https://apis.google.com/js/client.js?onload=checkAuth"></script>

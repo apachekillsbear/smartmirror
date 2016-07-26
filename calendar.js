@@ -90,6 +90,7 @@ function showEvents(resp) {
       var date = eventDate.getDate();
       var day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][eventDate.getDay()]; //Designates the integer values to string values for days of the week
       var hours = eventDate.getHours();
+      var minutes = eventDate.getMinutes();
 
       if (hours < 12) {
         var meridian = " AM"; //Sets the meridian (AM/PM) to the correct type for the time.
@@ -106,12 +107,16 @@ function showEvents(resp) {
         }
       }
 
+      if (minutes < 10) { //Fixes issue where minutes less than 10 would appear with a single digit
+      	minutes = "0" + minutes; 
+      }
+
       $("<tr>").append(
         $("<td id=event-day>").html(day) //Displays the day of the week as a cell in the table
       ).append(
         $("<td>").html(date)  //Displays the date as a cell in the table
       ).append(
-        $("<td>").html(hours + meridian) //Displays the start time of the event as a cell in the table
+        $("<td>").html(hours + ":" + minutes + meridian) //Displays the start time of the event as a cell in the table
       ).append(
         $("<td>").html(event.summary) //Displays the event description as a cell in the table
       )

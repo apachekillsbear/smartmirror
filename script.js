@@ -28,6 +28,7 @@ var config = {
 }
 
 var newsData;
+var openModalId = null;
 
 // Initialising setTime on launch
 $(window).ready(function() {
@@ -42,6 +43,25 @@ $(window).ready(function() {
 
 	getNews();
 	setInterval(getNews, 1000*60*15) //15 mins
+
+	//Click handlers for modals
+	$("#weather").on("click", function(){
+		openModal("#modal-weather");
+	});
+
+	$("#time").on("click", function(){
+		openModal("#modal-time");
+	})
+
+	$("#news").on("click", function(){
+		openModal("#modal-news");
+	})
+
+	$("#agenda").on("click", function(){
+		openModal("#modal-agenda");
+	})
+
+	$(".closeModal").on("click", closeModal);
 }); 
 
 var basetextsize = 15;
@@ -153,8 +173,11 @@ function scaleText() { //Scales the text size to stay constant regardless of win
 	$("#weather-icon").height(textbasesize);
 
 	//News
-	$("#news").css("font-size", textbasesize*0.18);
-	$(".news-item img").height(textbasesize*0.18);
+	$("#news").css("font-size", textbasesize*0.15);
+	$(".news-item img").height(textbasesize*0.15);
+
+	//Agenda
+	$("#agenda").css("font-size", textbasesize*0.15);
 }
 
 function getNews() {
@@ -201,4 +224,40 @@ function newsScroll() {
         }
         scaleText();
 	}, 1000);
+}
+
+// Script for sliding page transitions for each element
+function pageMove(direction) {
+	var mainelm = document.querySelector("main");
+
+	if (direction == "up") {
+		TweenLite.to(mainelm, .8, {top:"0"});
+	} else {
+		TweenLite.to(mainelm, .8, {top:"100%"});
+	}
+}
+
+function modalMove(direction, id) {
+	var mainelm = document.querySelector(id);
+
+	if (direction == "up") {
+		TweenLite.to(mainelm, .8, {bottom:"100%"});
+	} else {
+		TweenLite.to(mainelm, .8, {bottom:"0"});
+	}
+}
+
+function openModal(id) { //Opens each element "id"
+	pageMove("down");
+	modalMove("down", id);
+	openModalId = id;
+}
+
+function closeModal() { //Closes each element "id"
+	if(openModalId == null){
+		return;
+	}
+	modalMove("up", openModalId);
+	pageMove("up");
+	openModalId = null;
 }
